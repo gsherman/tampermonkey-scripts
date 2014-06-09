@@ -12,7 +12,7 @@
 
 //TODO [under consideration]:
 //Remove the "added attachment abc.png" line from the history
-//hide the image if its under a certain size (but still make it accessible)
+//hide the image if its under a certain size (but still make it accessible), i.e. for social media icons in email signatures
 
 // ==/UserScript==
 
@@ -27,6 +27,7 @@ function addGlobalStyle(css) {
 }
 
 addGlobalStyle('.history-inline-image { max-width: 900px !important; margin:10px;box-shadow: 5px 5px 5px #888; }');
+addGlobalStyle('.hangout { position:absolute;top:2px;right:272px;height:35px; }');
 
 //Make jQuery :contains Case-Insensitive
 jQuery.expr[':'].contains = function(a, i, m) {
@@ -36,12 +37,21 @@ jQuery.expr[':'].contains = function(a, i, m) {
 
 var done=false;
 
-function ShowImages(){
-    if (done){return;}
-    
-	//console.log("inside ShowImages function");
-	//console.log($("a:contains('.png')").length );
+function AddGoogleHangoutButton(){
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://apis.google.com/js/platform.js";
+    $("head").append(s);
 
+    var email = $("dd.contactEmail").text();
+    
+    var btn ='<g:hangout render="createhangout" invites="[{ id : \'' + email + '\', invite_type : \'EMAIL\' }]"></g:hangout>';
+    var wrapper = '<div class="hangout">' + btn + '</div>';    
+    $("div.page-header div.menu.pull-right").append(wrapper);                       
+}
+
+function ShowImages(){
+    if (done){return;}    
     $("a:contains('.png'), a:contains('.jpg'), a:contains('.gif')").each(
       function(){
       $(this).after('<br/><img class="history-inline-image" src="' + $(this).attr('href') + '" />');    
@@ -49,6 +59,12 @@ function ShowImages(){
 	done=true;
 }
 
-// once the created history item is available, then show the images
-waitForKeyElements ("span.action-taken:contains('Created')",ShowImages); 
+function EnhanceCasePage(){
+    ShowImages();
+    AddGoogleHangoutButton();
+}
+
+// once the created history item is available, then enhance the case page
+waitForKeyElements ("span.action-taken:contains('Created')",EnhanceCasePage); 
+
 
