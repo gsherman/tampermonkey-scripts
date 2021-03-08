@@ -17,7 +17,8 @@
 
 (function() {
     'use strict';
-     var $ = window.$;
+    var jQuery = window.$;
+    jQuery.noConflict(true);
 
     // SPA:
     var menu = '';
@@ -30,7 +31,7 @@
     menu+='<a class="dropdown-item" href="/api/doc" target="_blank">API docs</a>';
     menu+='</div></li>';
 
-    $(".navbar-nav").append(menu);
+    jQuery(".navbar-nav").append(menu);
 
     //Legacy:
     var legacyMenu = '';
@@ -43,6 +44,6 @@
     legacyMenu+='<li><a id="api-docs" class="js-create-new dropdown-icon full-screen"  href="/api/doc" target="_blank">API Docs</a</li>';
     legacyMenu+='</ul>';
 
-    $("div.menubar ul.nav").append(legacyMenu);
+    jQuery("div.menubar ul.nav").append(legacyMenu);
 
 })();
