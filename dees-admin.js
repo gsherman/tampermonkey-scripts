@@ -25,16 +25,16 @@
     }
 
     var menus = [
-        {"name": "Support", href: "/agent/support", "target": "_self"},
-        {"name": "FA Manager", href: "/agent/famanager/edit", "target": "_self"},
-        {"name": "Settings", href: "/agent/config/settings", "target": "_self"},
-        {"name": "Batch Action Reports", href: "/agent/batch-action-reports", "target": "_self"},
+        {"name": "✴ Support", href: "/agent/support", "target": "_self"},
+        {"name": "💪FA Manager", href: "/agent/famanager/edit", "target": "_self"},
+        {"name": "⚙ Settings", href: "/agent/config/settings", "target": "_self"},
+        {"name": "🎬 Batch Action Reports", href: "/agent/batch-action-reports", "target": "_self"},
         {"name": separator, href: "javascript: void(0)", "target": "_self"},
-        {"name": "API docs", href: "/api/doc", "target": "_blank"},
-        {"name": "Chat Admin", href: "https://chat.dovetailnow.com/app/settings", "target": "_blank"},
-        {"name": "Grafana Dashboards", href: "https://dovetail.grafana.net/dashboards", "target": "_blank"},
-        {"name": "Kibana Logs", href: "https://logs.dovetailnow.com/", "target": "_blank"},
-        {"name": "Kibana Logs (Demo tenants)", href: "https://demo-logs.dovetailnow.com/", "target": "_blank"}
+        {"name": "📑 API docs", href: "/api/doc", "target": "_blank"},
+        {"name": "💬 Chat Admin", href: "https://chat.dovetailnow.com/app/settings", "target": "_blank"},
+        {"name": "📊 Grafana Dashboards", href: "https://dovetail.grafana.net/dashboards", "target": "_blank"},
+        {"name": "🗃 Kibana Logs", href: "https://logs.dovetailnow.com/", "target": "_blank"},
+        {"name": "🗃 Kibana Logs (Demo tenants)", href: "https://demo-logs.dovetailnow.com/", "target": "_blank"}
     ];
 
     // SPA:
