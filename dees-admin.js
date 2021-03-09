@@ -34,7 +34,7 @@
         {"name": "💬 Chat Admin", href: "https://chat.dovetailnow.com/app/settings", "target": "_blank"},
         {"name": "📊 Grafana Dashboards", href: "https://dovetail.grafana.net/dashboards", "target": "_blank"},
         {"name": "🗃 Kibana Logs", href: "https://logs.dovetailnow.com/", "target": "_blank"},
-        {"name": "🗃 Kibana Logs (Demo tenants)", href: "https://demo-logs.dovetailnow.com/", "target": "_blank"}
+        {"name": "🗃 Kibana (Demo tenants)", href: "https://demo-logs.dovetailnow.com/", "target": "_blank"}
     ];
 
     // SPA:
