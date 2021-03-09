@@ -4,7 +4,6 @@
 // @version      0.1
 // @description  Add an Admin menu to DEES Agent
 // @author       Gary Sherman
-// @match        http://localhost/agent/query/my-cases
 // @grant        none
 // @include      http://localhost/agent/*
 // @include      https://*.dovetailnow.com/agent/*
