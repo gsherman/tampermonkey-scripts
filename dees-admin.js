@@ -6,9 +6,9 @@
 // @author       Gary Sherman
 // @match        http://localhost/agent/query/my-cases
 // @grant        none
-// @include     http://localhost/agent/*
-// @include     https://*.dovetailnow.com/agent/*
-// @require http://code.jquery.com/jquery-1.11.2.min.js
+// @include      http://localhost/agent/*
+// @include      https://*.dovetailnow.com/agent/*
+// @require      http://code.jquery.com/jquery-1.11.2.min.js
 
 // ==/UserScript==
 
@@ -20,10 +20,17 @@
     var jQuery = window.$;
     var jQ = jQuery.noConflict( true );
 
+    var separator ='';
+    for (var index=0;index<20;index++){
+        separator+="&ndash;";
+    }
+
     var menus = [
         {"name": "Support", href: "support", "target": "_self"},
         {"name": "FA Manager", href: "famanager/edit", "target": "_self"},
         {"name": "Settings", href: "config/settings", "target": "_self"},
+        {"name": "Batch Action Reports", href: " batch-action-reports", "target": "_self"},
+        {"name": separator, href: "javascript: void(0)", "target": "_self"},
         {"name": "API docs", href: "/api/doc", "target": "_blank"},
         {"name": "Chat Admin", href: "https://chat.dovetailnow.com/app/settings", "target": "_blank"},
         {"name": "Grafana Dashboards", href: "https://dovetail.grafana.net/dashboards", "target": "_blank"},
