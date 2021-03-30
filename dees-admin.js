@@ -46,19 +46,16 @@
         {"name": "🗃 Kibana (Demo tenants)", href: "https://demo-logs.dovetailnow.com/", "target": "_blank"},
         {"name": separator, href: "javascript: void(0)", "target": "_self"},
         {"name": "❓ Custom Shortcuts", href: "javascript: window.custom_alert('" + shortcuts + "')", "target": "_self"},
-
-
     ];
 
     var setupMenus = [
-        {"name": "Lists", href: "/agent/listadmin/configure", "target": "_self"},
-        {"name": "Portal Configs", href: "/agent/admin/portal-configs", "target": "_self"},
-        {"name": "View Settings", href: "/agent/settings", "target": "_self"},
-        {"name": "Routing Rules", href: "/agent/rules/routing", "target": "_self"},
-        {"name": "Incoming Email Rules", href: "/agent/rules/email", "target": "_self"},
+        {"name": "📃 Lists", href: "/agent/listadmin/configure", "target": "_self"},
+        {"name": "⚙ Portal Configs", href: "/agent/admin/portal-configs", "target": "_self"},
+        {"name": "💢 View Settings", href: "/agent/settings", "target": "_self"},
+        {"name": "🔃 Routing Rules", href: "/agent/rules/routing", "target": "_self"},
+        {"name": "📧 Incoming Email Rules", href: "/agent/rules/email", "target": "_self"},
         {"name": separator, href: "javascript: void(0)", "target": "_self"},
-
-        {"name": "Everything else", href: "/agent/setup", "target": "_self"}
+        {"name": "💫 Everything else", href: "/agent/setup", "target": "_self"}
     ];
 
     function custom_alert( message, title){
