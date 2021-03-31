@@ -23,7 +23,7 @@
         separator+="&ndash;";
     }
 
-    var shortcuts = '<h2>Shortcuts</h2>';
+    var shortcuts = '';
     shortcuts+='<table>';
     shortcuts+= '<tr><td>g+o</td><td>Open Old (Legacy) Page</td></tr>';
     shortcuts+= '<tr><td>g+n</td><td>Open New (SPA) Pag</td></tr>';
@@ -45,7 +45,7 @@
         {"name": "🗃 Kibana Logs", href: "https://logs.dovetailnow.com/", "target": "_blank"},
         {"name": "🗃 Kibana (Demo tenants)", href: "https://demo-logs.dovetailnow.com/", "target": "_blank"},
         {"name": separator, href: "javascript: void(0)", "target": "_self"},
-        {"name": "❓ Custom Shortcuts", href: "javascript: window.custom_alert('" + shortcuts + "')", "target": "_self"},
+        {"name": "❓ Custom Shortcuts", href: "javascript: window.custom_alert('" + shortcuts + "','Custom Keyboard Shortcuts')", "target": "_self"},
     ];
 
     var setupMenus = [
