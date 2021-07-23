@@ -1,0 +1,148 @@
+<style>
+  #custom-admin-content{
+  margin-left:50px;
+  }
+  
+  .admin-label{
+    font-size:20px;
+    font-weight:bold;
+    min-width:200px;
+    vertical-align: middle;
+    line-height:30px;
+  }  
+  .admin-icon{
+    width:32px;
+    height:32px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+table.admin tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+table.admin tr td{padding:3px;}  
+  .grid_3.with-border-right{border:none;}
+</style>
+
+<div id="custom-admin-content">
+<h1>Setup</h1>
+<hr/>
+
+<table class="admin">
+  <tr>
+    <td class="admin-label">Email Accounts</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#new-email-account').click();">      
+      <a href="/agent/query/EmailAccount" class="openInStackAndGo"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" ></a>      
+    </td>
+  </tr>
+  <tr>
+    <td class="admin-label">Email Categories</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newEmployeeCategory').click();">      
+      <a href="/agent/query/EmployeeCategory" class="openInStackAndGo"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" ></a>      
+    </td>
+  </tr>
+   <tr>
+    <td class="admin-label"><a href="/agent/rules/email">Email Rules</a></td>
+     <td>&nbsp;</td>
+  </tr>  
+  <tr>
+    <td class="admin-label">Event Rules</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newEventRule').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#editEventRule').click();" >
+    </td>
+  </tr>  
+  
+  <tr>
+    <td class="admin-label">Holidays</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newNonWorkingSchedule').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryNonWorkingSchedule').click();" >
+    </td>
+  </tr>  
+
+    <tr>
+    <td class="admin-label"><a href="/agent/listadmin/configure">Lists</a></td>
+       <td>&nbsp;</td>
+  </tr>
+  
+  
+  <tr>
+    <td class="admin-label">Message Templates</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newMessageTemplateGroupRight').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryMessageTemplateGroupRight').click();" >
+    </td>
+  </tr>
+  
+    <tr>
+    <td class="admin-label"><a href="/agent/admin/portal-configs">Portal Configs</a></td>
+          <td>
+    <a href="/agent/admin/portal-configs/create"><img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon"></a>
+    <a href="/agent/admin/portal-configs"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon"></a>
+    <a href="/agent/admin/portal-configs/migrate"><img src="https://s2.svgbox.net/materialui.svg?ic=launch" class="admin-icon" title="Migrate menu items from PortalMenuButtons list"></a>
+      </td>
+      
+  </tr>
+
+  
+  
+  <tr>
+    <td class="admin-label">Queues</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newQueueRight').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#selectQueueRight').click();" >
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="admin-label">Roles & Permissions</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newRole').click();">
+      <a href="/agent/query/Role" class="openInStackAndGo"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" ></a>   
+    </td>
+  </tr>
+   <tr>
+    <td class="admin-label"><a href="/agent/rules/routing">Routing Rules</a></td>
+      <td>&nbsp;</td>
+  </tr>  
+  <tr>
+    <td class="admin-label"><a href="/agent/settings">Settings</a></td>
+     <td>&nbsp;</td>
+  </tr>
+    <tr>
+    <td class="admin-label">SLAs</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newSLA').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#querySLA').click();" >
+    </td>
+  </tr>
+  <tr>
+    <td class="admin-label">Templates</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newTemplateRight').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryTemplateRight').click();" >
+    </td>
+  </tr>  
+  <tr>
+    <td class="admin-label">Users</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newUserRight').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#selectUserRight').click();" >
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="admin-label">Work Calendars</td>
+    <td>
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newWorkCalendar').click();">
+    <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryWorkCalendar').click();" >
+    </td>
+  </tr>
+
+
+
+</table>
+</div>
+
