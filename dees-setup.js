@@ -7,7 +7,7 @@
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @match        https://localhost/agent/setup
 // @include      https://*.dovetailnow.com/agent/setup
-// @resource html     https://gist.githubusercontent.com/gsherman/a6bfd8658abc0c0392ae2ff049ecf2c4/raw/dees-admin-page.html?25
+// @resource html     https://raw.githubusercontent.com/gsherman/tampermonkey-scripts/master/dees-setup-page.html
 // @grant  GM_getResourceText
 
 
