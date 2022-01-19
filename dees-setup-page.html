@@ -16,8 +16,9 @@
     cursor: pointer;
     margin-right: 10px;
   }
-    .help-icon{
-    margin-left: 10px;
+    .help-icon{    
+      cursor:help;
+      display:none;
   }
 table.admin tr:nth-child(odd) {
   background-color: #f2f2f2;
@@ -35,10 +36,8 @@ table.admin tr td{padding:3px;}
     <td class="admin-label">Email Accounts</td>
     <td>
       <a href="/agent/query/EmailAccount" class="openInStackAndGo"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" ></a>      
-    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#new-email-account').click();">      
-      
-      <img src="https://s2.svgbox.net/materialui.svg?ic=help&color=000" class="admin-icon help-icon" title="Configures POP3 email accounts that the application polls for support requests.">
-      
+    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#new-email-account').click();">            
+      <img src="https://s2.svgbox.net/materialui.svg?ic=help&color=000" class="admin-icon help-icon" title="Configures POP3 email accounts that the application polls for support requests.">      
     </td>
   </tr>
    <tr>
