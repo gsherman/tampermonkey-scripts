@@ -5,10 +5,17 @@
 // @description  Add an Admin menu to DEES Agent
 // @author       Gary Sherman
 // @include      http://localhost/agent/*
+// @include      https://localhost/agent/*
 // @include      https://*.dovetailnow.com/agent/*
 // @require      http://code.jquery.com/jquery-1.11.2.min.js
 // @require      http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js
 // @grant        none
+
+/*
+KNOWN problems
+ * jqueryUI conflicts with legacy pages; the jqueryui dialogs (find-case-by-id, custom shortcurts) don't render exactly correct; sometimes mess up baseline overlays
+
+*/
 
 // ==/UserScript==
 
@@ -23,13 +30,19 @@
         separator+="&ndash;";
     }
 
+    function findcasebyid(){
+            var caseId = jQ( "#caseId" ).val();
+            window.location = "/agent/cases/id/" + caseId;
+        }
+
+
     var shortcuts = '';
     shortcuts+='<table>';
-    shortcuts+= '<tr><td>g+o</td><td>Open Old (Legacy) Page</td></tr>';
-    shortcuts+= '<tr><td>g+n</td><td>Open New (SPA) Pag</td></tr>';
+    shortcuts+= '<tr><td width=100px>g+o</td><td>Open Old (Legacy) Page</td></tr>';
+    shortcuts+= '<tr><td>g+n</td><td>Open New (SPA) Page</td></tr>';
     shortcuts+= '<tr><td>g+u+p</td><td>Open Preferences</td></tr>';
     shortcuts+= '<tr><td>g+p+c</td><td>Open Portal Config</td></tr>';
-    shortcuts+= '<tr><td>ctrl+i</td><td>Find By Id</td></tr>';
+    shortcuts+= '<tr><td>ctrl+i</td><td>Find Case By Id</td></tr>';
     shortcuts+= '<tr><td>l+i</td><td>copy Lorem Ipsum To Clipboard</td></tr>';
     shortcuts+='</table>';
 
@@ -45,17 +58,26 @@
         {"name": "🗃 Kibana Logs", href: "https://logs.dovetailnow.com/", "target": "_blank"},
         {"name": "🗃 Kibana (Demo tenants)", href: "https://demo-logs.dovetailnow.com/", "target": "_blank"},
         {"name": separator, href: "javascript: void(0)", "target": "_self"},
-        {"name": "❓ Custom Shortcuts", href: "javascript: window.custom_alert('" + shortcuts + "','Custom Keyboard Shortcuts')", "target": "_self"},
+        {"name": "❓ Custom Shortcuts", href: "javascript: window.custom_alert('" + shortcuts + "','Custom Keyboard Shortcuts')", "target": "_self"}
     ];
 
     var setupMenus = [
+        {"name": "📤Import/ Export", href: "/agent/admin/import-export", "target": "_self"},
         {"name": "📃 Lists", href: "/agent/listadmin/configure", "target": "_self"},
-        {"name": "⚙ Portal Configs", href: "/agent/admin/portal-configs", "target": "_self"},
-        {"name": "💢 View Settings", href: "/agent/settings", "target": "_self"},
+        {"name": "💢 Portal Configs", href: "/agent/admin/portal-configs", "target": "_self"},
+        {"name": "⚙ View Settings", href: "/agent/settings", "target": "_self"},
         {"name": "🔃 Routing Rules", href: "/agent/rules/routing", "target": "_self"},
         {"name": "📧 Incoming Email Rules", href: "/agent/rules/email", "target": "_self"},
         {"name": separator, href: "javascript: void(0)", "target": "_self"},
         {"name": "💫 Everything else", href: "/agent/setup", "target": "_self"}
+    ];
+
+    var anonymousEmployeeGUID = 'e54c5c78-8f83-43df-b417-ae21016e40a7';
+    var caseMenus = [
+        {"name": "Password Reset"},
+        {"name": "Paycheck Problem"},
+        {"name": "Appointment"},
+        {"name": "Something else"}
     ];
 
     function custom_alert( message, title){
@@ -83,11 +105,10 @@
         + 'rel="stylesheet" type="text/css">'
     );
 
-
     // SPA:
     var setupMenu = '';
     setupMenu+='<li class="nav-item dropdown">';
-    setupMenu+='<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Setup</a>';
+    setupMenu+='<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Setup</a>'; //style="color:#3fe5ff;"
     setupMenu+= '<div class="dropdown-menu">';
     for(i in setupMenus) {
         setupMenu+='<a class="dropdown-item" href="' + setupMenus[i].href + '" target="' + setupMenus[i].target + '">' + setupMenus[i].name + '</a>';
@@ -103,7 +124,22 @@
         menu+='<a class="dropdown-item" href="' + menus[i].href + '" target="' + menus[i].target + '">' + menus[i].name + '</a>';
     }
     menu+='</div></li>';
+
+    // this needs to be a form/submit
+    //menu+='<form onSubmit="findcasebyid();return false;"><input type="text" id=caseId" placeholder="caseByID" class="form-control xsearchField" ;" /></form?';
+
     jQ(".navbar-nav").first().append(menu);
+
+    var caseMenu = '';
+    caseMenu+='<li class="nav-item dropdown">';
+    caseMenu+='<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Create Case...</a>';
+    caseMenu+= '<div class="dropdown-menu">';
+    for(i in caseMenus) {
+        caseMenu+='<a class="dropdown-item" target=_self href="/agent/cases/create/employee/' + anonymousEmployeeGUID + '?template=' + caseMenus[i].name + '">' + caseMenus[i].name + '</a>';
+    }
+    caseMenu+='</div></li>';
+    jQ(".navbar-nav").first().append(caseMenu);
+
 
     //Legacy:
     var legacySetupMenu = '';
