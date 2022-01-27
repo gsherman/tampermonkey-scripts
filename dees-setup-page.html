@@ -25,12 +25,14 @@ table.admin tr:nth-child(odd) {
 }
 table.admin tr td{padding:3px;}  
   .grid_3.with-border-right{border:none;}
+
+table.admin{float:left;margin-right:100px;}
+
 </style>
 
 <div id="custom-admin-content">
-<h1>Setup</h1>
-<hr/>
 
+<h1>Setup</h1>
 <table class="admin">
   <tr>
     <td class="admin-label">Email Accounts</td>
@@ -155,9 +157,20 @@ table.admin tr td{padding:3px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newWorkCalendar').click();">
     </td>
   </tr>
-
-
-
 </table>
+
+
+  <h1>Tools</h1>  
+<table class="admin">
+  <tr>
+    <td class="admin-label"><a href="/api/doc">APIs</a></td>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="admin-label"><a href="/agent/support/checksecuritypost">Case Security Checker</a></td>
+     <td>&nbsp;</td>
+  </tr>  
+  </table>
+  
 </div>
 
