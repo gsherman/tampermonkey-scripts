@@ -20,7 +20,7 @@
       cursor:help;
       display:none;
   }
-table.admin tr:nth-child(odd) {
+table.admin tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 table.admin tr td{padding:3px;}  
@@ -32,8 +32,8 @@ table.admin{float:left;margin-right:100px;}
 
 <div id="custom-admin-content">
 
-<h1>Setup</h1>
 <table class="admin">
+  <tr><td colspan="2" class="admin-label">Setup</td></tr>  
   <tr>
     <td class="admin-label">Email Accounts</td>
     <td>
@@ -160,8 +160,8 @@ table.admin{float:left;margin-right:100px;}
 </table>
 
 
-  <h1>Tools</h1>  
 <table class="admin">
+  <tr><td colspan="2" class="admin-label">Tools</td></tr>  
   <tr>
     <td class="admin-label"><a href="/api/doc">APIs</a></td>
      <td>&nbsp;</td>
