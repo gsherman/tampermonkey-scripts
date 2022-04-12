@@ -28,6 +28,10 @@ table.admin tr td{padding:3px;}
 
 table.admin{float:left;margin-right:100px;}
 
+td.description{
+  vertical-align: bottom;
+}
+
 </style>
 
 <div id="custom-admin-content">
@@ -38,13 +42,15 @@ table.admin{float:left;margin-right:100px;}
     <td class="admin-label">Email Accounts</td>
     <td>
       <a href="/agent/query/EmailAccount" class="openInStackAndGo"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" ></a>      
-    <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#new-email-account').click();">            
+      <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#new-email-account').click();">            
       <img src="https://s2.svgbox.net/materialui.svg?ic=help&color=000" class="admin-icon help-icon" title="Configures POP3 email accounts that the application polls for support requests.">      
     </td>
+    <td class="description">Configures POP3 email accounts that the application polls for support requests.<td>
   </tr>
    <tr>
     <td class="admin-label"><a href="/agent/rules/email">Email Rules</a></td>
      <td>&nbsp;</td>
+     <td class="description"><td>
   </tr>
   <tr>
     <td class="admin-label">Employee Categories</td>
@@ -52,6 +58,7 @@ table.admin{float:left;margin-right:100px;}
       <a href="/agent/query/EmployeeCategory" class="openInStackAndGo"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" ></a>      
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newEmployeeCategory').click();">      
     </td>
+    <td class="description">Configure employee categories<td>
   </tr>  
   <tr>
     <td class="admin-label">Event Rules</td>
@@ -59,6 +66,7 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#editEventRule').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newEventRule').click();">
     </td>
+    <td class="description">Configure application behavior for different events with different conditions in the system.<td>
   </tr>  
   
   <tr>
@@ -67,6 +75,7 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryNonWorkingSchedule').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newNonWorkingSchedule').click();">
     </td>
+    <td class="description"><td>
   </tr>  
 
   
@@ -77,11 +86,13 @@ table.admin{float:left;margin-right:100px;}
     <a href="/agent/admin/import-export/exports/create"><img src="https://s2.svgbox.net/materialui.svg?ic=cloud_download" class="admin-icon" title="Create Export"></a>
     <a href="/agent/admin/import-export/imports/create"><img src="https://s2.svgbox.net/materialui.svg?ic=cloud_upload" class="admin-icon" title="Create Import"></a>
      </td>
+     <td class="description"><td>
       
   </tr>  
     <tr>
     <td class="admin-label"><a href="/agent/listadmin/configure">Lists</a></td>
        <td>&nbsp;</td>
+       <td class="description">Configure the display values, ordering, and visibility of list data<td>
   </tr>
   
   
@@ -91,6 +102,7 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryMessageTemplateGroupRight').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newMessageTemplateGroupRight').click();">
     </td>
+    <td class="description">Configure message templates for sending information to users of the application.<td>
   </tr>
   
     <tr>
@@ -100,7 +112,7 @@ table.admin{float:left;margin-right:100px;}
     <a href="/agent/admin/portal-configs/create"><img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon"></a>
     <a href="/agent/admin/portal-configs/migrate"><img src="https://s2.svgbox.net/materialui.svg?ic=transform" class="admin-icon" title="Migrate menu items from PortalMenuButtons list"></a>
       </td>
-      
+      <td class="description">Employee Portal Configuration<td>
   </tr>
 
   
@@ -111,6 +123,7 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#selectQueueRight').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newQueueRight').click();">
     </td>
+    <td class="description">Queues are shared amongst users. Workflow Items such as cases and solutions can be dispatched to a queue, and then can be accepted and worked by the queue members.<td>
   </tr>
   
   <tr>
@@ -119,14 +132,17 @@ table.admin{float:left;margin-right:100px;}
       <a href="/agent/query/Role" class="openInStackAndGo"><img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" ></a>   
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newRole').click();">
     </td>
+    <td class="description">Configure the roles and permissions available to users of the application.<td>
   </tr>
    <tr>
     <td class="admin-label"><a href="/agent/rules/routing">Routing Rules</a></td>
       <td>&nbsp;</td>
+      <td class="description"><td>
   </tr>  
   <tr>
     <td class="admin-label"><a href="/agent/settings">Settings</a></td>
      <td>&nbsp;</td>
+     <td class="description">View important settings<td>
   </tr>
     <tr>
     <td class="admin-label">SLAs</td>
@@ -134,6 +150,7 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#querySLA').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newSLA').click();">
     </td>
+    <td class="description">Configure Service Level Agreements<td>
   </tr>
   <tr>
     <td class="admin-label">Templates</td>
@@ -141,6 +158,7 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryTemplateRight').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newTemplateRight').click();">
     </td>
+    <td class="description">Configure templates for sending emails and notes to employees.<td>
   </tr>  
   <tr>
     <td class="admin-label">Users</td>
@@ -148,6 +166,7 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#selectUserRight').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newUserRight').click();">
     </td>
+    <td class="description">Users (such as call-center agents, managers, system administrators) can login and use the Dovetail application.<td>
   </tr>
   
   <tr>
@@ -156,10 +175,11 @@ table.admin{float:left;margin-right:100px;}
     <img src="https://s2.svgbox.net/materialui.svg?ic=search" class="admin-icon" onclick="$('#queryWorkCalendar').click();" >
     <img src="https://s2.svgbox.net/materialui.svg?ic=add_box" class="admin-icon" onclick="$('#newWorkCalendar').click();">
     </td>
+    <td class="description">Configure work calendars<td>
   </tr>
 </table>
 
-
+<!-- 
 <table class="admin">
   <tr><td colspan="2" class="admin-label">Tools</td></tr>  
   <tr>
@@ -171,6 +191,6 @@ table.admin{float:left;margin-right:100px;}
      <td>&nbsp;</td>
   </tr>  
   </table>
+-->
   
 </div>
-
