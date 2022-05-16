@@ -38,15 +38,15 @@
     }
 
     function openBatchActionReportPage(){
-        document.location = 'http://localhost/agent/batch-action-reports/';
+        document.location = '/agent/batch-action-reports/';
     }
 
     function openPreferences(){
-        document.location = 'http://localhost/agent/preferences';
+        document.location = '/agent/preferences';
     }
 
     function openPortalConfig(){
-        document.location = 'http://localhost/agent/admin/portal-configs';
+        document.location = '/agent/admin/portal-configs';
     }
 
     function findCaseById_JQUI(){
