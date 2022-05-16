@@ -7,11 +7,14 @@
 // @match        https://tampermonkey.net/index.php?version=4.7.54&ext=dhdg&updated=true
 // @grant        GM.xmlHttpRequest
 // @include      http://localhost/agent/*
+// @include      https://localhost/agent/*
+// @include      https://default.lclhst.io/agent/*
 // @include      https://*.dovetailnow.com/agent/*
 // @require      http://cdn.craig.is/js/mousetrap/mousetrap.min.js?9d308
 // @require      http://code.jquery.com/jquery-1.11.2.min.js
 // @require      http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js
 // @grant        GM.setClipboard
+// @grant        GM.cookie
 
 // ==/UserScript==
 
@@ -24,9 +27,7 @@
     mousetrap.bind('g b', openBatchActionReportPage);
     mousetrap.bind('g u p', openPreferences);
     mousetrap.bind('g p c', openPortalConfig);
-    //mousetrap.bind(['command+i', 'ctrl+i'],findById);
-    mousetrap.bind(['command+i', 'ctrl+i'],findByIdJQUI);
-
+    mousetrap.bind(['command+i', 'ctrl+i'],findCaseById_JQUI);
     mousetrap.bind(['l i'],copyLoremIpsumToClipboard);
 
     function copyLoremIpsumToClipboard(){
@@ -48,122 +49,40 @@
         document.location = 'http://localhost/agent/admin/portal-configs';
     }
 
-    function findByIdJQUI(){
+    function findCaseById_JQUI(){
 
         var content = '';
         content+="<style>";
         content+="label { width:50px; }";
         content+="input, select {width:80%; padding: .4em; }";
         content+="</style>";
-        content+="<form><p><label for='entityId'>ID</label><input type='text' id='entityId'></input></p>";
-        content+="<p><label for='entityType'>Type</label><select id='entityType'><option>Case</option><option>Solution</option></select></p>";
+        content+="<form><p><label for='entityId'>ID</label><input type='text' id='caseId'></input></p>";
         content+="<input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>";
         content+="</form>";
 
-        function findbyid(){
-            var entityId = jQ( "#entityId" ).val();;
-            var entityType = jQ( "#entityType" ).val();
-            //alert(jQ( "#entityId" ).val());
-            if (!entityId) {return false;}
-            if (entityType ==="Solution") entityId = entityType + ' ' + entityId;
-
-            var token = unsafeWindow.dtData.security.antiForgery;
-            var formData = "GoToText=" + entityId + "&__RequestVerificationToken=" + encodeURIComponent(token);
-
-            GM.xmlHttpRequest({
-                method: "POST",
-                url: "http://localhost/agent/go/goto",
-                data: formData,
-                headers: {"Content-Type": "application/x-www-form-urlencoded","Accept":"application/json"},
-                onload: function(response) {
-                    if (response.status === 200) {
-                        //response looks like:
-                        //
-                        // <html><body><textarea rows="10" cols="80">{"success":true,"refresh":false,"navigatePage":"/agent/case/7af0476f-10e3-4d7b-8d84-acdb015cbf2e"}</textarea></body></html>
-                        // OR
-                        // <html><body><textarea rows="10" cols="80">{"success":false,"refresh":false,"errors":[{"category":null,"field":"en-US_GoToText","label":null,"message":"Could not find object matching the criteria"}]}</textarea></body></html>
-                        // sheesh
-
-                        var parser = new DOMParser();
-                        var htmlDoc = parser.parseFromString(response.responseText, 'text/html');
-                        var textareaValue = htmlDoc.getElementsByTagName('textarea')[0].value;
-                        var json = JSON.parse(textareaValue);
-                        if (json.success)
-                        {
-                            document.location = json.navigatePage;
-                        }else{
-                            alert(entityId + ': ' + json.errors[0].message);
-                        }
-                    }else{
-                        alert(response.responseText);
-                        console.log(response.responseText);
-                    }
-                }
-            })
-
+        function findcasebyid(){
+            var caseId = jQ( "#caseId" ).val();;
+            window.location = "/agent/cases/id/" + caseId;
         }
 
         var dialog = jQ("<div id='findById'></div>").html(content).dialog({
-            title: 'Find by ID',
+            title: 'Find Case by ID',
             resizable: false,
             modal: true,
             width:400,
+            position: { my: "center top-200", at: "center", of: window },
             buttons: {
-                // 'Cancel': function() {jQ( this ).dialog( 'close' );},
-                'Find': findbyid
+                'Find': findcasebyid
             }
         }
      );
 
      var form = dialog.find( "form" ).on( "submit", function( event ) {
          event.preventDefault();
-         findbyid();
+         findcasebyid();
     });
 
     }
-
-    /*
-    function findById(){
-        var caseId = prompt("Enter an ID number\nBy default, it's a Case ID\nFor Solutions, use \"Solution + ID\"", "");
-        if (!caseId) {return false;}
-
-        var token = unsafeWindow.dtData.security.antiForgery;
-        var formData = "GoToText=" + caseId + "&__RequestVerificationToken=" + encodeURIComponent(token);
-
-        GM.xmlHttpRequest({
-            method: "POST",
-            url: "http://localhost/agent/go/goto",
-            data: formData,
-            headers: {"Content-Type": "application/x-www-form-urlencoded","Accept":"application/json"},
-            onload: function(response) {
-                if (response.status === 200) {
-                    //response looks like:
-                    //
-                    // <html><body><textarea rows="10" cols="80">{"success":true,"refresh":false,"navigatePage":"/agent/case/7af0476f-10e3-4d7b-8d84-acdb015cbf2e"}</textarea></body></html>
-                    // OR
-                    // <html><body><textarea rows="10" cols="80">{"success":false,"refresh":false,"errors":[{"category":null,"field":"en-US_GoToText","label":null,"message":"Could not find object matching the criteria"}]}</textarea></body></html>
-                    // sheesh
-
-                    var parser = new DOMParser();
-                    var htmlDoc = parser.parseFromString(response.responseText, 'text/html');
-                    var textareaValue = htmlDoc.getElementsByTagName('textarea')[0].value;
-                    var json = JSON.parse(textareaValue);
-                    if (json.success)
-                    {
-                        document.location = json.navigatePage;
-                    }else{
-                        alert(caseId + ': ' + json.errors[0].message);
-                    }
-                }else{
-                    alert(response.responseText);
-                    console.log(response.responseText);
-                }
-            }
-        })
-
-        return false;
-    }
-*/
 
 
 })();
