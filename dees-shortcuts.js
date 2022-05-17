@@ -6,10 +6,10 @@
 // @author       You
 // @match        https://tampermonkey.net/index.php?version=4.7.54&ext=dhdg&updated=true
 // @grant        GM.xmlHttpRequest
-// @include      http://localhost/agent/*
-// @include      https://localhost/agent/*
-// @include      https://default.lclhst.io/agent/*
-// @include      https://*.dovetailnow.com/agent/*
+// @match        http://localhost/agent/*
+// @match        https://localhost/agent/*
+// @match        https://default.lclhst.io/agent/*
+// @match        https://*.dovetailnow.com/agent/*
 // @require      http://cdn.craig.is/js/mousetrap/mousetrap.min.js?9d308
 // @require      http://code.jquery.com/jquery-1.11.2.min.js
 // @require      http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js
@@ -29,6 +29,19 @@
     mousetrap.bind('g p c', openPortalConfig);
     mousetrap.bind(['command+i', 'ctrl+i'],findCaseById_JQUI);
     mousetrap.bind(['l i'],copyLoremIpsumToClipboard);
+
+    var urlPieces = window.location.pathname.split('/');
+    var slug = urlPieces[urlPieces.length - 1];
+    var entityType = urlPieces[urlPieces.length - 2];
+
+     if (entityType == 'cases'){
+         mousetrap.bind(['r'],refreshCaseTimeline);
+     }
+
+    function refreshCaseTimeline(){
+        jQ('div.timeline-groups').effect('highlight',{"easing":"easeInOutElastic",color: '#dde4f1'},700)
+        document.getElementsByClassName("switch-details")[0].click();
+    }
 
     function copyLoremIpsumToClipboard(){
         var ipsum = "Overcome key issues to meet key milestones. Mumbo jumbo. We need to start advertising on social media can we take this offline. Three-martini lunch. Deliverables flesh that out. \r\n";
