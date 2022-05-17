@@ -35,12 +35,18 @@
     var entityType = urlPieces[urlPieces.length - 2];
 
      if (entityType == 'cases'){
-         mousetrap.bind(['r'],refreshCaseTimeline);
+         mousetrap.bind(['r'],refreshCaseTimeline); //r for Refresh (even though it's a toggle of Show More/Less)
+         mousetrap.bind(['o'],OrderCaseTimeline);
      }
 
     function refreshCaseTimeline(){
         jQ('div.timeline-groups').effect('highlight',{"easing":"easeInOutElastic",color: '#dde4f1'},700)
         document.getElementsByClassName("switch-details")[0].click();
+    }
+
+     function OrderCaseTimeline(){
+        jQ('div.timeline-groups').effect('highlight',{"easing":"easeInOutElastic",color: '#dde4f1'},700)
+        document.getElementsByClassName("reverse-order")[0].click();
     }
 
     function copyLoremIpsumToClipboard(){
