@@ -16,7 +16,6 @@
 // ==/UserScript==
 
 // TO DO:
-// * option to filter out inactive elements
 // * export to Excel
 
 (function() {
@@ -26,7 +25,7 @@
 
     function exportToCSV(){
         const universalBOM = "\uFEFF";
-        var outputCsv = universalBOM + "\"key\",\"displayedText\"";
+        var outputCsv = universalBOM + "\"key\",\"displayedText\",\"enabled\"";
         var itemCount = jQ("table#list-item-table tr.list-item").length;
         if (itemCount < 1){
             alert('No list is currently selected. Please search for and select a list on the left.');
@@ -35,9 +34,9 @@
 
         var allItems = jQ("table#list-item-table tr.list-item").each(function(){
             outputCsv += "\n\"" + jQ("span.item-key",this)[0].innerText + "\",\"" + jQ("span.item-text > input", this)[0].value + "\"";
+            outputCsv += ",\"" + jQ("input.item-active",this)[0].checked + "\"";
         });
         //console.log(outputCsv);
-
 
         const blob = new Blob([outputCsv], { type: 'text/csv;charset=utf-8,' })
         const objUrl = URL.createObjectURL(blob)
