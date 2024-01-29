@@ -3,8 +3,8 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  create case page styling improvements
-// @author       You
-// @icon         http://localhost/logos/crosshatch.jpg
+// @author       Gary Sherman
+// @icon         https://raw.githubusercontent.com/gsherman/tampermonkey-scripts/master/crosshatch.jpg
 // @match        https://tampermonkey.net/index.php?version=4.7.54&ext=dhdg&updated=true
 // @grant GM_log
 // @grant GM_addStyle
@@ -15,6 +15,8 @@
 // @match  https://*.dovetailnow.com/agent/*
 // @match  https://*.dovetailnow.com/agent/*/*
 // @match  https://*.dovetailnow.com/agent/*/*/*
+// @updateURL https://github.com/gsherman/tampermonkey-scripts/raw/master/create%20case%20page%20styling%20improvements.user.js
+// @downloadURL https://github.com/gsherman/tampermonkey-scripts/raw/master/create%20case%20page%20styling%20improvements.user.js
 // ==/UserScript==
 
 (function() {
@@ -23,7 +25,6 @@
     //change the tab order (notes is wrong)
     //make work when create case page is the first page loaded in the app
     //make work for case-create-employee: /agent/cases/create/employee/GUID
-
 
     'use strict';
     var jQuery = window.$;
